@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(10, 10, 10);
+  margin: 20px 300px;
+}
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: rgb(10, 10, 10);
+  height: 70px;
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+h2 {
+  position: relative;
+  margin-left: -500px;
+  margin-top: -15px;
+  font-family: "Lora", serif;
+}
+
+#searchbar {
+  border-radius: 50px;
+  width: 230px;
+  padding: 7px;
+  position: relative;
+  left: 350px;
+  top: 30px;
+  background-color: rgb(28, 26, 26);
+  border: none;
+  color: rgb(103, 91, 91);
+  font-size: small;
+}
+i {
+  color: white;
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+
+#search {
+  position: relative;
+  right: -300px;
+  top: 30px;
+  color: white;
+  cursor: pointer;
+  display: inline;
+  z-index: 10;
+}
+.part {
+  position: fixed;
+  left: 20px;
+  top: 250px;
+}
+.ring {
+  width: 55vw;
+  max-height: 500px;
+  display: block;
+  margin-top: 90px;
+  border-radius: 10px;
+  position: relative;
+  left: 70px;
+}
+
+.movie {
+  background-color: rgb(44, 38, 38);
+  width: 90%;
+  height: 30px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  line-height: 30px;
+  margin-top: 10px;
+  position: relative;
+  left: 70px;
+  top: 20px;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+  left: 100px;
+  top: 50px;
+}
+.play {
+  color: rgb(0, 128, 75);
+  position: relative;
+  right: -500px;
+  top: -10px;
+  font-size: xx-large;
+}

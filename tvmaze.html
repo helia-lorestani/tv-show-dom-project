@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV SHOW</title>
+    <link rel="stylesheet" href="tvmaze.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="episode.css" />
+  </head>
+  <body>
+    <nav>
+      <h2>
+        <span style="color: darkgreen">TV</span
+        ><span style="color: white">SHOW</span>
+      </h2>
+      <form action="" id="searchForm">
+        <input
+          type="text"
+          id="searchbar"
+          name="query"
+          placeholder="Search movie"
+        />
+        <i class="bi bi-search" id="search"></i>
+        <i class="play bi bi-play-btn-fill"></i>
+      </form>
+    </nav>
+    <img class="ring" src="ring.jpg" alt="" />
+    <div class="movie">Movies</div>
+    <div id="container"></div>
+    <div class="part">
+      <i class="bi bi-house-fill">Home</i>
+      <i class="bi bi-fire">Trending</i>
+      <i class="bi bi-heart">Favorite</i>
+      <i class="bi bi-person-circle">Login</i>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="tvmaze.js"></script>
+  </body>
+</html>
