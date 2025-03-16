@@ -101,3 +101,15 @@ i {
   top: -10px;
   font-size: xx-large;
 }
+footer {
+  background-color: rgb(28, 26, 26);
+  width: 100vw;
+  height: 40px;
+  padding: 10px;
+  position: relative;
+  bottom: -70px;
+  margin-left: -300px;
+}
+a {
+  text-decoration: none;
+}
