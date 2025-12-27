@@ -1,11 +1,20 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const showId = params.get("id");
-  const select = document.querySelector("select");
+  const select = document.getElementById("menu");
+  const container = document.querySelector("#episodes-container");
+
   if (!showId) {
     document.body.innerHTML = "<h1>No series found</h1>";
     return;
   }
+
+  select.addEventListener("change", (event) => {
+    const selectedId = event.target.value;
+    if (selectedId && selectedId !== "home") {
+      window.location.href = `episode.html?id=${selectedId}`;
+    }
+  });
 
   try {
     const [showResponse, seasonsResponse] = await Promise.all([
@@ -13,21 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       axios.get(`https://api.tvmaze.com/shows/${showId}/seasons`),
     ]);
 
-    const showData = showResponse.data;
     const seasons = seasonsResponse.data;
-
-    const titleElement = document.querySelector("#title");
-    if (titleElement) {
-      titleElement.innerText = showData.name;
-    } else {
-      console.error("Element 'title' not found!");
-    }
-
-    const container = document.querySelector("#episodes-container");
-    if (!container) {
-      console.error("Element 'episodes-container' not found!");
-      return;
-    }
 
     for (const season of seasons) {
       const episodesResponse = await axios.get(
@@ -57,14 +52,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           right: "5px",
           fontSize: "xx-large",
           color: "rgb(0, 128, 75)",
+          cursor: "pointer"
         });
 
-        const episodeLabel = `S${String(season.number).padStart(
-          2,
-          "0"
-        )}-E${String(episode.number).padStart(2, "0")}`;
+        const episodeLabel = `S${String(season.number).padStart(2, "0")}-E${String(episode.number).padStart(2, "0")}`;
 
-        episodeDetails.innerHTML = `${episodeLabel} ${episode.name}`;
+        episodeDetails.innerHTML = `${episodeLabel}   ${episode.name}`;
         Object.assign(episodeDetails.style, {
           position: "absolute",
           bottom: "50px",
@@ -76,21 +69,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         const tooltip = document.createElement("div");
-        tooltip.style.position = "absolute";
-        tooltip.style.background = "black";
-        tooltip.style.color = "white";
-        tooltip.style.padding = "5px 10px";
-        tooltip.style.borderRadius = "5px";
-        tooltip.style.fontSize = "12px";
-        tooltip.style.display = "none";
-        tooltip.style.pointerEvents = "none";
+        Object.assign(tooltip.style, {
+          position: "absolute",
+          background: "black",
+          color: "white",
+          padding: "5px 10px",
+          borderRadius: "5px",
+          fontSize: "12px",
+          display: "none",
+          pointerEvents: "none",
+          zIndex: "1000"
+        });
         document.body.appendChild(tooltip);
 
         episodeCard.addEventListener("mouseover", (event) => {
-          tooltip.innerHTML = episode.summary;
+          tooltip.innerHTML = episode.summary || "No summary";
           tooltip.style.display = "block";
           tooltip.style.width = "200px";
-          tooltip.style.minHeight = "100px";
           tooltip.style.top = event.pageY + 2 + "px";
           tooltip.style.left = event.pageX + 2 + "px";
         });
@@ -100,15 +95,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         const option = document.createElement("option");
-        option.innerHTML = `${episodeLabel} ${episode.name}`;
+        option.value = episode.id;
+        option.textContent = `${episodeLabel} - ${episode.name}`;
 
         episodeCard.append(episodeImage, episodeDetails, episodeIcon);
         container.appendChild(episodeCard);
         select.appendChild(option);
-
-        option.addEventListener("click", () => {
-          window.location.href = `episode.html?id=${episode.id}`;
-        });
       });
     }
   } catch (error) {

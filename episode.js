@@ -69,6 +69,37 @@ iconsDiv.className = "social-icons";
       window.open(episode.url, "_blank");
     });
 
+    // const select = document.getElementById("menu");
+
+    // const allEpisodesOption = document.createElement("option");
+    // allEpisodesOption.value = "home";
+    // allEpisodesOption.textContent = "All Episodes";
+    // select.appendChild(allEpisodesOption);
+
+    // episodes.forEach((ep) => {
+    //   const option = document.createElement("option");
+    //   option.value = ep.id;
+    //   option.textContent = `S${String(ep.season).padStart(2, "0")}-E${String(
+    //     ep.number
+    //   ).padStart(2, "0")} - ${ep.name}`;
+
+    //   if (ep.id == episodeId) {
+    //     option.selected = true;
+    //   }
+
+    //   select.appendChild(option);
+    //   container.appendChild(episodeIcon);
+    // });
+
+
+
+    // select.addEventListener("change", (event) => {
+    //   const selectedValue = event.target.value;
+    //   if (selectedValue === "home") {
+    //     window.location.href = `details.html?id=${showId}`;
+    //   } else {
+    //     window.location.href = `episode.html?id=${selectedValue}`;
+    //   }
     const select = document.getElementById("menu");
 
     const allEpisodesOption = document.createElement("option");
@@ -79,27 +110,26 @@ iconsDiv.className = "social-icons";
     episodes.forEach((ep) => {
       const option = document.createElement("option");
       option.value = ep.id;
-      option.textContent = `S${String(ep.season).padStart(2, "0")}-E${String(
-        ep.number
-      ).padStart(2, "0")} - ${ep.name}`;
+      const epLabel = `S${String(ep.season).padStart(2, "0")}-E${String(ep.number).padStart(2, "0")}`;
+      option.textContent = `${epLabel} - ${ep.name}`;
 
       if (ep.id == episodeId) {
         option.selected = true;
       }
 
       select.appendChild(option);
-      container.appendChild(episodeIcon);
     });
 
-
+    container.appendChild(episodeIcon);
 
     select.addEventListener("change", (event) => {
-      const selectedValue = event.target.value;
-      if (selectedValue === "home") {
+      const selectedId = event.target.value;
+      if (selectedId === "home") {
         window.location.href = `details.html?id=${showId}`;
       } else {
-        window.location.href = `episode.html?id=${selectedValue}`;
+        window.location.href = `episode.html?id=${selectedId}`;
       }
+   
     });
   } catch (error) {
     console.error(error);
