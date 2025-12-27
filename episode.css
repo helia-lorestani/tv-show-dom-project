@@ -68,3 +68,31 @@ img {
   cursor: pointer;
   color: white;
 }
+
+.episode-title {
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  height: 40px;         
+  overflow: hidden;
+  position: absolute;
+  bottom: 30px;
+
+  
+}
+
+.social-icons {
+ position: absolute;
+  top: 250px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.social-icons i {
+  font-size: 20px;
+  cursor: pointer;
+}
+

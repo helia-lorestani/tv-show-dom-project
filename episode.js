@@ -41,38 +41,25 @@ document.addEventListener("DOMContentLoaded", async () => {
             ? episode.image.medium
             : "https://via.placeholder.com/300"
         }" alt="${episode.name}">
-        <p>${formattedTitle}</p>
+       <p class="episode-title">${formattedTitle}</p>
+
       </div>
     `;
     const episodeIcon = document.createElement("i");
-    const icon1 = document.createElement("i");
-    const icon2 = document.createElement("i");
-    const icon3 = document.createElement("i");
-    const icon4 = document.createElement("i");
     episodeIcon.className = "bi bi-play-circle-fill";
-    icon1.className = "bi bi-instagram";
-    icon2.className = "bi bi-telegram";
-    icon3.className = "bi bi-github";
-    icon4.className = "bi bi-linkedin";
-    icon1.style.position = "absolute";
-    icon2.style.position = "relative";
-    icon3.style.position = "relative";
-    icon4.style.position = "relative";
-    icon1.style.left = "812px";
-    icon1.style.bottom = "300px";
-    icon2.style.left = "20px";
-    icon2.style.top = "145px";
-    icon3.style.top = "109px";
-    icon3.style.left = "-20px";
-    icon4.style.top = "73px";
-    icon4.style.left = "-65px";
-    icon1.style.zIndex = "100";
-    icon2.style.zIndex = "100";
-    icon3.style.zIndex = "100";
-    icon4.style.zIndex = "100";
+    
+   const iconsDiv = document.createElement("div");
+iconsDiv.className = "social-icons";
+
+["instagram", "telegram", "github", "linkedin"].forEach((name) => {
+  const icon = document.createElement("i");
+  icon.className = `bi bi-${name}`;
+  iconsDiv.appendChild(icon);
+});
+
     Object.assign(episodeIcon.style, {
       position: "absolute",
-      left: "810px",
+      left: "790px",
       top: "350px",
       fontSize: "xx-large",
       color: "rgb(0, 128, 75)",
@@ -102,11 +89,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       select.appendChild(option);
       container.appendChild(episodeIcon);
-      container.appendChild(icon1);
-      container.appendChild(icon2);
-      container.appendChild(icon3);
-      container.appendChild(icon4);
     });
+
+
 
     select.addEventListener("change", (event) => {
       const selectedValue = event.target.value;
@@ -121,3 +106,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.body.innerHTML = `<h1>${error.message}</h1>`;
   }
 });
+ 
