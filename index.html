@@ -12,31 +12,25 @@
     <link rel="stylesheet" href="episode.css" />
   </head>
   <body>
+
     <nav>
-      <h2>
-        <span style="color: darkgreen">TV</span
-        ><span style="color: white">SHOW</span>
-      </h2>
-      <form action="" id="searchForm">
-        <input
-          type="text"
-          id="searchbar"
-          name="query"
-          placeholder="Search movie"
-        />
-        <i class="bi bi-search" id="search"></i>
-        <i class="play bi bi-play-btn-fill"></i>
-      </form>
-    </nav>
+  <h2>
+    <span style="color: darkgreen">TV</span><span style="color: white">SHOW</span>
+  </h2>
+  
+  <form action="" id="searchForm">
+    <div class="search-wrapper">
+      <input type="text" id="searchbar" name="query" placeholder="Search movie" />
+      <i class="bi bi-search" id="search"></i>
+    </div>
+    <i class="play bi bi-play-btn-fill" ></i>
+  </form>
+</nav>
+
     <img class="ring" src="ring.jpg" alt="" />
     <div class="movie">Movies</div>
     <div id="container"></div>
-    <div class="part">
-      <i class="bi bi-house-fill">Home</i>
-      <i class="bi bi-fire">Trending</i>
-      <i class="bi bi-heart">Favorite</i>
-      <i class="bi bi-person-circle">Login</i>
-    </div>
+    
 
     <footer>
       <h3 style="color: white">

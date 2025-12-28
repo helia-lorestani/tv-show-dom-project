@@ -8,37 +8,39 @@ body {
   background-color: rgb(10, 10, 10);
   text-align: center;
 }
+
 nav {
   position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  z-index: 1000;
   background-color: rgb(10, 10, 10);
   height: 70px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 5%;
 }
 
 h2 {
-  color: white;
-  position: relative;
-  right: 250px;
-  top: 10px;
   font-family: "Lora", serif;
+  font-size: 1.5rem;
+  margin: 0;
 }
+
 #menu {
   border-radius: 50px;
-  width: 250px;
+  width: 200px;
   padding: 10px;
-  position: relative;
-  right: -300px;
-  top: 20px;
   background-color: rgb(28, 26, 26);
   border: none;
   color: white;
   font-size: small;
+  outline: none;
 }
+
+
 i {
   color: white;
   font-size: medium;
@@ -47,21 +49,24 @@ i {
   padding: 10px;
   text-align: center;
 }
-.part {
-  position: fixed;
-  left: 20px;
-  top: 250px;
-}
+
 img {
   width: 100%;
   height: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-start-start-radius: 5px;
 }
+
 .episode-card {
   width: 200px;
   height: 250px;
   margin: auto;
   position: relative;
   top: 150px;
+  border-radius: 5px;
   background-color: rgb(28, 26, 26);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -96,3 +101,19 @@ img {
   cursor: pointer;
 }
 
+
+
+@media (max-width: 498px) {
+  h2 {
+    display: none;
+  }
+
+  #menu{
+    width: 220px;
+  }
+  
+  nav {
+    justify-content: center;
+  }
+
+}

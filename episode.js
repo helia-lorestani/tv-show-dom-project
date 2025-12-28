@@ -57,49 +57,34 @@ iconsDiv.className = "social-icons";
   iconsDiv.appendChild(icon);
 });
 
-    Object.assign(episodeIcon.style, {
-      position: "absolute",
-      left: "790px",
-      top: "350px",
-      fontSize: "xx-large",
-      color: "rgb(0, 128, 75)",
-    });
+
+const card = document.querySelector('.episode-card');
+
+card.appendChild(iconsDiv);
+    
+Object.assign(episodeIcon.style, {
+  position: "absolute",
+  right: "10px",
+  bottom: "10px",
+  fontSize: "35px",
+  color: "rgb(0, 128, 75)",
+  cursor: "pointer",
+  zIndex: "10",
+  top: "auto",
+  left: "auto",
+  margin: "0",
+  padding: "0"
+});
+
+
+if (card) {
+  card.appendChild(episodeIcon);
+}
 
     episodeIcon.addEventListener("click", () => {
       window.open(episode.url, "_blank");
     });
 
-    // const select = document.getElementById("menu");
-
-    // const allEpisodesOption = document.createElement("option");
-    // allEpisodesOption.value = "home";
-    // allEpisodesOption.textContent = "All Episodes";
-    // select.appendChild(allEpisodesOption);
-
-    // episodes.forEach((ep) => {
-    //   const option = document.createElement("option");
-    //   option.value = ep.id;
-    //   option.textContent = `S${String(ep.season).padStart(2, "0")}-E${String(
-    //     ep.number
-    //   ).padStart(2, "0")} - ${ep.name}`;
-
-    //   if (ep.id == episodeId) {
-    //     option.selected = true;
-    //   }
-
-    //   select.appendChild(option);
-    //   container.appendChild(episodeIcon);
-    // });
-
-
-
-    // select.addEventListener("change", (event) => {
-    //   const selectedValue = event.target.value;
-    //   if (selectedValue === "home") {
-    //     window.location.href = `details.html?id=${showId}`;
-    //   } else {
-    //     window.location.href = `episode.html?id=${selectedValue}`;
-    //   }
     const select = document.getElementById("menu");
 
     const allEpisodesOption = document.createElement("option");
@@ -119,8 +104,6 @@ iconsDiv.className = "social-icons";
 
       select.appendChild(option);
     });
-
-    container.appendChild(episodeIcon);
 
     select.addEventListener("change", (event) => {
       const selectedId = event.target.value;

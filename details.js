@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  const tooltip = document.createElement("div");
+  Object.assign(tooltip.style, {
+    position: "absolute",
+    background: "black",
+    color: "white",
+    padding: "10px",
+    borderRadius: "5px",
+    fontSize: "12px",
+    display: "none",
+    pointerEvents: "none",
+    zIndex: "9999",
+    width: "250px"
+  });
+  document.body.appendChild(tooltip);
+
   select.addEventListener("change", (event) => {
     const selectedId = event.target.value;
     if (selectedId && selectedId !== "home") {
@@ -36,13 +51,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         episodeCard.style.position = "relative";
 
         const episodeImage = document.createElement("img");
-        episodeImage.src = episode.image
-          ? episode.image.medium
-          : "https://via.placeholder.com/150";
-        episodeImage.alt = episode.name;
+        episodeImage.src = episode.image ? episode.image.medium : "https://via.placeholder.com/150";
+        
+        const episodeLabel = `S${String(season.number).padStart(2, "0")}-E${String(episode.number).padStart(2, "0")}`;
 
         const episodeDetails = document.createElement("div");
         episodeDetails.classList.add("episode-details");
+        episodeDetails.innerHTML = `${episodeLabel} ${episode.name}`;
+        Object.assign(episodeDetails.style, {
+          position: "absolute",
+          bottom: "20px",
+          left: "10px",
+        });
 
         const episodeIcon = document.createElement("i");
         episodeIcon.className = "bi bi-play-circle-fill";
@@ -55,39 +75,19 @@ document.addEventListener("DOMContentLoaded", async () => {
           cursor: "pointer"
         });
 
-        const episodeLabel = `S${String(season.number).padStart(2, "0")}-E${String(episode.number).padStart(2, "0")}`;
-
-        episodeDetails.innerHTML = `${episodeLabel}   ${episode.name}`;
-        Object.assign(episodeDetails.style, {
-          position: "absolute",
-          bottom: "50px",
-          left: "10px",
-        });
-
         episodeIcon.addEventListener("click", () => {
           window.open(episode.url, "_blank");
         });
 
-        const tooltip = document.createElement("div");
-        Object.assign(tooltip.style, {
-          position: "absolute",
-          background: "black",
-          color: "white",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          fontSize: "12px",
-          display: "none",
-          pointerEvents: "none",
-          zIndex: "1000"
-        });
-        document.body.appendChild(tooltip);
-
-        episodeCard.addEventListener("mouseover", (event) => {
-          tooltip.innerHTML = episode.summary || "No summary";
-          tooltip.style.display = "block";
-          tooltip.style.width = "200px";
-          tooltip.style.top = event.pageY + 2 + "px";
-          tooltip.style.left = event.pageX + 2 + "px";
+        episodeCard.addEventListener("mousemove", (event) => {
+          if (episode.summary) {
+            tooltip.innerHTML = episode.summary;
+            tooltip.style.display = "block";
+            tooltip.style.top = event.pageY + 15 + "px";
+            tooltip.style.left = event.pageX + 15 + "px";
+          } else {
+            tooltip.style.display = "none";
+          }
         });
 
         episodeCard.addEventListener("mouseleave", () => {
