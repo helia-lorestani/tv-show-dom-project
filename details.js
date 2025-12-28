@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         episodeDetails.innerHTML = `${episodeLabel} ${episode.name}`;
         Object.assign(episodeDetails.style, {
           position: "absolute",
-          bottom: "20px",
-          left: "10px",
+          bottom: "30px",
+          left: 0 ,
         });
 
         const episodeIcon = document.createElement("i");
