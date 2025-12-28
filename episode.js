@@ -51,17 +51,35 @@ document.addEventListener("DOMContentLoaded", async () => {
    const iconsDiv = document.createElement("div");
 iconsDiv.className = "social-icons";
 
-["instagram", "telegram", "github", "linkedin"].forEach((name) => {
+const socialMedia = [
+  { name: "instagram", url: "https://instagram.comt/tvmazecom" },
+  { name: "telegram", url: "https://t.me/tvmazecom" },
+  { name: "github", url: "https://github.com/helia-lorestani" },
+  { name: "linkedin", url: "https://linkedin.com/tvmazecom" }
+];
+
+    
+socialMedia.forEach((item) => {
+  const anchor = document.createElement("a");
+  anchor.href = item.url;
+  anchor.target = "_blank";
+  anchor.rel = "noreferrer";
+  anchor.style.textDecoration = "none";
+  anchor.style.color = "inherit";
+
   const icon = document.createElement("i");
-  icon.className = `bi bi-${name}`;
-  iconsDiv.appendChild(icon);
+  icon.className = `bi bi-${item.name}`;
+  icon.style.cursor = "pointer";
+
+  anchor.appendChild(icon);
+  iconsDiv.appendChild(anchor);
 });
 
-
 const card = document.querySelector('.episode-card');
+if (card) {
+  card.appendChild(iconsDiv);
+}
 
-card.appendChild(iconsDiv);
-    
 Object.assign(episodeIcon.style, {
   position: "absolute",
   right: "10px",
